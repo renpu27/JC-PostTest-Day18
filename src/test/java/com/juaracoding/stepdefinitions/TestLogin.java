@@ -5,7 +5,6 @@ import com.juaracoding.pages.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -20,26 +19,27 @@ public class TestLogin {
     public void setUp() {
         DriverSingleton.getInstance("chrome");
         driver = DriverSingleton.getDriver();
-        loginPage = new LoginPage();
         driver.get("https://shop.demoqa.com/");
+        loginPage = new LoginPage();
 
     }
 
-    @Test //(priority = 2)
+    @Test (priority = 2)
     public void testValidLogin(){
-//        driver.findElement(By.xpath("//input[@id='username']")).sendKeys(Keys.CONTROL,"a");
-//        driver.findElement(By.xpath("//input[@id='username']")).sendKeys(Keys.DELETE);
+        driver.findElement(By.xpath("//input[@id='username']")).sendKeys(Keys.CONTROL,"a");
+        driver.findElement(By.xpath("//input[@id='username']")).sendKeys(Keys.DELETE);
+        delay(2);
         loginPage.tologinpage();
         loginPage.login("renpu-27", "@Renaldo27");
         Assert.assertEquals(loginPage.getTxtDashboard(),"Dashboard");
     }
 
-//    @Test (priority = 1)
-//    public void testInvalidLogin(){
-//        loginPage.tologinpage();
-//        loginPage.login("renpu-27", "hehehe");
-//        Assert.assertEquals(loginPage.getTxtError(),"ERROR: The username or password you entered is incorrect.");
-//    }
+    @Test (priority = 1)
+    public void testInvalidLogin(){
+        loginPage.tologinpage();
+        loginPage.login("renpu-27", "hehehe");
+        Assert.assertEquals(loginPage.getTxtError(),"Lost your password");
+    }
 
     @AfterClass
     public void quitBrowser(){

@@ -1,12 +1,10 @@
 package com.juaracoding.pages;
 
 import com.juaracoding.drivers.DriverSingleton;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 
 public class ShoppingPage {
 
@@ -24,17 +22,15 @@ public class ShoppingPage {
     WebElement btnItem;
 
     @FindBy(xpath = "//select[@id='pa_color']")
-//    @FindBy(id = "pa_color")
     WebElement btnColor;
 
     @FindBy(xpath = "//select[@id='pa_size']")
-//    @FindBy(id = "pa_size")
     WebElement btnSize;
 
     @FindBy(xpath = "//*[@id=\"product-1485\"]/div[1]/div[2]/form/div/div[2]/button")
     WebElement btnAdd;
 
-    @FindBy(xpath = "//*[@id=\"noo-site\"]/div[2]/div/div/div[1]/div")
+    @FindBy(xpath = "//a[@class='button wc-forward wp-element-button']")
     WebElement txtAdded;
 
 public String getTxtAdded(){return txtAdded.getText();
@@ -44,15 +40,7 @@ public void toItem(){btnItem.click();}
 
 public void shopping(){
     btnColor.sendKeys("Black");
-////    WebElement selectColor = btnColor;
-//    WebElement selectColor = driver.findElement(By.id("pa_color"));
-//    Select color = new Select(selectColor);
-//    color.selectByIndex(1);
     btnSize.sendKeys("34");
-////    WebElement selectSize = btnSize;
-//    WebElement selectSize = driver.findElement(By.id("pa_size"));
-//    Select size =new Select(selectSize);
-//    size.selectByIndex(2);
     btnAdd.click();
 }
 

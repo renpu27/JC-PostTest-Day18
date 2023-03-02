@@ -35,7 +35,7 @@ public class LoginPage {
     @FindBy(xpath = "//a[normalize-space()='Dashboard']")
     WebElement txtDashboard;
 
-    @FindBy(xpath = "//div[@id='primary']//li[1]")
+    @FindBy(xpath = "//a[@title='Password Lost and Found']")
     WebElement txtError;
 
     public String getTxtDashboard(){
